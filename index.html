@@ -6,7 +6,6 @@
   <title>מדריך למשתמש – Optimizer Task</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    /* ══ TOKENS ══ */
     :root {
       --primary:       hsl(152,55%,33%);
       --primary-light: hsl(152,55%,42%);
@@ -21,417 +20,173 @@
       --destructive:   hsl(0,72%,51%);
       --warning:       hsl(38,92%,50%);
       --info:          hsl(199,89%,48%);
-      --r:             12px;
-      --sh:            0 2px 12px rgba(0,0,0,.08);
-      --sh-md:         0 4px 24px rgba(0,0,0,.12);
     }
-
-    /* ══ RESET ══ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Heebo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      font-size: 15px;
-      -webkit-text-size-adjust: 100%;
-    }
-    img { max-width: 100%; display: block; }
-    code {
-      background: var(--secondary);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1px 6px;
-      font-size: .88em;
-      font-family: monospace;
-    }
+    body { font-family:'Heebo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; font-size:15px; -webkit-text-size-adjust:100%; }
+    img { max-width:100%; display:block; }
+    code { background:var(--secondary); border:1px solid var(--border); border-radius:4px; padding:1px 6px; font-size:.88em; font-family:monospace; }
 
-    /* ══ HERO ══ */
-    .hero {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 60%, var(--primary-light) 100%);
-      color: #fff;
-      padding: 40px 20px 72px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-    .hero-logo {
-      width: 130px;
-      margin: 0 auto 20px;
-      border-radius: 14px;
-      filter: drop-shadow(0 4px 16px rgba(0,0,0,.25));
-    }
-    .hero h1 {
-      font-size: clamp(1.6rem, 5vw, 2.6rem);
-      font-weight: 800;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 8px rgba(0,0,0,.2);
-    }
-    .hero p {
-      font-size: clamp(.9rem, 2.5vw, 1.1rem);
-      opacity: .9;
-      max-width: 520px;
-      margin: 0 auto;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.3);
-      border-radius: 20px;
-      padding: 5px 16px;
-      font-size: .82rem;
-      margin-top: 16px;
-    }
+    /* HERO */
+    .hero { background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,var(--primary-light) 100%); color:#fff; padding:40px 20px 72px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events:none; }
+    .hero-logo { width:120px; margin:0 auto 18px; border-radius:14px; filter:drop-shadow(0 4px 16px rgba(0,0,0,.25)); }
+    .hero h1 { font-size:clamp(1.6rem,5vw,2.6rem); font-weight:800; margin-bottom:10px; text-shadow:0 2px 8px rgba(0,0,0,.2); }
+    .hero p { font-size:clamp(.9rem,2.5vw,1.1rem); opacity:.9; max-width:520px; margin:0 auto; }
+    .hero-badge { display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3); border-radius:20px; padding:5px 16px; font-size:.82rem; margin-top:16px; }
 
-    /* ══ LAYOUT ══ */
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 16px 60px;
-    }
+    /* LAYOUT */
+    .container { max-width:960px; margin:0 auto; padding:0 16px 60px; }
 
-    /* ══ TOC ══ */
-    .toc {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 20px 20px 24px;
-      margin: -44px auto 28px;
-      box-shadow: var(--sh-md);
-      position: relative;
-      z-index: 2;
-    }
-    .toc-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-      gap: 8px;
-    }
-    .toc-toggle h2 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .toc-arrow {
-      font-size: 1rem;
-      color: var(--primary);
-      transition: transform .25s;
-      flex-shrink: 0;
-    }
-    .toc-arrow.open { transform: rotate(180deg); }
-    .toc-body {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height .35s ease;
-    }
-    .toc-body.open { max-height: 600px; }
-    .toc ol {
-      padding-right: 18px;
-      margin-top: 14px;
-    }
-    .toc li { margin-bottom: 7px; }
-    .toc a {
-      color: var(--text);
-      text-decoration: none;
-      font-size: .92rem;
-      line-height: 1.5;
-      display: inline-block;
-      transition: color .2s;
-    }
-    .toc a:hover, .toc a:active { color: var(--primary); }
+    /* TOC */
+    .toc { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:20px 20px 24px; margin:-44px auto 28px; box-shadow:0 4px 24px rgba(0,0,0,.12); position:relative; z-index:2; }
+    .toc-toggle { display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; gap:8px; }
+    .toc-toggle h2 { font-size:1rem; font-weight:700; color:var(--primary); display:flex; align-items:center; gap:8px; }
+    .toc-arrow { font-size:1rem; color:var(--primary); transition:transform .25s; }
+    .toc-arrow.open { transform:rotate(180deg); }
+    .toc-body { overflow:hidden; max-height:0; transition:max-height .35s ease; }
+    .toc-body.open { max-height:600px; }
+    .toc ol { padding-right:18px; margin-top:14px; }
+    .toc li { margin-bottom:7px; }
+    .toc a { color:var(--text); text-decoration:none; font-size:.92rem; transition:color .2s; }
+    .toc a:hover { color:var(--primary); }
 
-    /* ══ SECTION ══ */
-    .section {
-      background: var(--surface);
-      border-radius: var(--r);
-      border: 1px solid var(--border);
-      padding: 24px 18px;
-      margin-bottom: 20px;
-      box-shadow: var(--sh);
-      scroll-margin-top: 20px;
-    }
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 2px solid var(--accent);
-    }
-    .section-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
-      background: var(--accent);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-    }
-    .section-header h2 {
-      font-size: clamp(1.1rem, 3.5vw, 1.45rem);
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
-    .section-num {
-      font-size: .75rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      letter-spacing: .4px;
-    }
-    h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin: 20px 0 10px;
-    }
-    p { margin-bottom: 10px; }
+    /* SECTION */
+    .section { background:var(--surface); border-radius:12px; border:1px solid var(--border); padding:24px 18px; margin-bottom:20px; box-shadow:0 2px 12px rgba(0,0,0,.08); scroll-margin-top:20px; }
+    .section-header { display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:16px; border-bottom:2px solid var(--accent); }
+    .section-icon { width:44px; height:44px; min-width:44px; background:var(--accent); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+    .section-header h2 { font-size:clamp(1.1rem,3.5vw,1.45rem); font-weight:700; color:var(--primary-dark); }
+    .section-num { font-size:.75rem; color:var(--text-muted); font-weight:500; }
+    h3 { font-size:1rem; font-weight:700; color:var(--primary-dark); margin:20px 0 10px; }
+    p { margin-bottom:10px; }
 
-    /* ══ STEPS ══ */
-    .steps { list-style: none; counter-reset: step; }
-    .steps li {
-      counter-increment: step;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 12px;
-      padding: 13px 14px;
-      background: var(--secondary);
-      border-radius: 10px;
-      border-right: 4px solid var(--primary);
-      font-size: .93rem;
-      min-height: 48px;
-    }
-    .steps li::before {
-      content: counter(step);
-      background: var(--primary);
-      color: #fff;
-      min-width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: .82rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    /* STEPS */
+    .steps { list-style:none; counter-reset:step; }
+    .steps li { counter-increment:step; display:flex; gap:12px; align-items:flex-start; margin-bottom:12px; padding:13px 14px; background:var(--secondary); border-radius:10px; border-right:4px solid var(--primary); font-size:.93rem; min-height:48px; }
+    .steps li::before { content:counter(step); background:var(--primary); color:#fff; min-width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.82rem; flex-shrink:0; margin-top:1px; }
 
-    /* ══ INFO BOXES ══ */
-    .info-box, .tip-box, .warn-box {
-      border-radius: 10px;
-      padding: 13px 16px;
-      margin: 14px 0;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-    }
-    .info-box { background: hsl(199,89%,95%); border-right: 4px solid var(--info); }
-    .tip-box  { background: hsl(152,40%,93%); border-right: 4px solid var(--primary); }
-    .warn-box { background: hsl(38,92%,94%);  border-right: 4px solid var(--warning); }
-    .box-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-    .box-text { font-size: .9rem; line-height: 1.65; }
-    .box-text strong { font-weight: 700; display: block; margin-bottom: 2px; }
+    /* BOXES */
+    .info-box,.tip-box,.warn-box { border-radius:10px; padding:13px 16px; margin:14px 0; display:flex; gap:10px; align-items:flex-start; }
+    .info-box { background:hsl(199,89%,95%); border-right:4px solid var(--info); }
+    .tip-box  { background:hsl(152,40%,93%); border-right:4px solid var(--primary); }
+    .warn-box { background:hsl(38,92%,94%);  border-right:4px solid var(--warning); }
+    .box-icon { font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+    .box-text { font-size:.9rem; line-height:1.65; }
+    .box-text strong { font-weight:700; display:block; margin-bottom:2px; }
 
-    /* ══ CARDS ══ */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-    .card {
-      background: var(--secondary);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 12px;
-      text-align: center;
-    }
-    .card .card-icon { font-size: 1.8rem; margin-bottom: 6px; }
-    .card h4 { font-size: .92rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 5px; }
-    .card p  { font-size: .82rem; color: var(--text-muted); margin: 0; line-height: 1.5; }
+    /* CARDS */
+    .cards { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin-top:14px; }
+    .card { background:var(--secondary); border:1px solid var(--border); border-radius:10px; padding:14px 12px; text-align:center; }
+    .card .card-icon { font-size:1.8rem; margin-bottom:6px; }
+    .card h4 { font-size:.92rem; font-weight:700; color:var(--primary-dark); margin-bottom:5px; }
+    .card p  { font-size:.82rem; color:var(--text-muted); margin:0; line-height:1.5; }
 
-    /* ══ ROLE TABLE – mobile: card stack ══ */
-    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; }
-    .role-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: .88rem;
-      min-width: 420px;
+    /* ROLE TABLE */
+    .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:8px; }
+    .role-table { width:100%; border-collapse:collapse; font-size:.88rem; min-width:400px; }
+    .role-table th { background:var(--primary); color:#fff; padding:10px 12px; text-align:right; font-weight:600; white-space:nowrap; }
+    .role-table th:first-child { border-radius:0 8px 0 0; }
+    .role-table th:last-child  { border-radius:8px 0 0 0; }
+    .role-table td { padding:9px 12px; border-bottom:1px solid var(--border); vertical-align:middle; }
+    .role-table tr:nth-child(even) td { background:var(--secondary); }
+    .role-table tr:last-child td { border-bottom:none; }
+    @media(max-width:500px){
+      .table-wrap { overflow-x:visible; }
+      .role-table,.role-table thead,.role-table tbody,.role-table th,.role-table td,.role-table tr { display:block; }
+      .role-table thead { display:none; }
+      .role-table tr { background:var(--secondary); border-radius:10px; margin-bottom:10px; border:1px solid var(--border); padding:4px 0; }
+      .role-table tr:nth-child(even) td { background:transparent; }
+      .role-table td { border-bottom:1px solid var(--border); padding:9px 14px; display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:.87rem; }
+      .role-table td:last-child { border-bottom:none; }
+      .role-table td::before { content:attr(data-label); font-weight:700; color:var(--text-muted); font-size:.78rem; white-space:nowrap; flex-shrink:0; }
     }
-    .role-table th {
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 12px;
-      text-align: right;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-    .role-table th:first-child { border-radius: 0 8px 0 0; }
-    .role-table th:last-child  { border-radius: 8px 0 0 0; }
-    .role-table td {
-      padding: 9px 12px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: middle;
-    }
-    .role-table tr:nth-child(even) td { background: var(--secondary); }
-    .role-table tr:last-child td { border-bottom: none; }
+    .badge { display:inline-block; padding:3px 9px; border-radius:20px; font-size:.78rem; font-weight:700; white-space:nowrap; }
+    .badge-yes { background:hsl(152,55%,88%); color:var(--primary-dark); }
+    .badge-no  { background:hsl(0,72%,93%);   color:var(--destructive); }
 
-    /* mobile card-style table */
-    @media (max-width: 500px) {
-      .table-wrap { overflow-x: visible; }
-      .role-table, .role-table thead, .role-table tbody,
-      .role-table th, .role-table td, .role-table tr { display: block; }
-      .role-table thead { display: none; }
-      .role-table tr {
-        background: var(--secondary);
-        border-radius: 10px;
-        margin-bottom: 10px;
-        border: 1px solid var(--border);
-        padding: 4px 0;
-      }
-      .role-table tr:nth-child(even) td { background: transparent; }
-      .role-table td {
-        border-bottom: 1px solid var(--border);
-        padding: 9px 14px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        font-size: .87rem;
-      }
-      .role-table td:last-child { border-bottom: none; }
-      .role-table td::before {
-        content: attr(data-label);
-        font-weight: 700;
-        color: var(--text-muted);
-        font-size: .78rem;
-        white-space: nowrap;
-        flex-shrink: 0;
-      }
-    }
+    /* TIMELINE */
+    .timeline { position:relative; padding-right:26px; }
+    .timeline::before { content:''; position:absolute; right:9px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--primary),var(--accent)); border-radius:2px; }
+    .timeline-item { position:relative; margin-bottom:20px; }
+    .timeline-item::before { content:''; position:absolute; right:-20px; top:11px; width:14px; height:14px; background:var(--primary); border:3px solid #fff; border-radius:50%; box-shadow:0 0 0 2px var(--primary); }
+    .tl-title { font-weight:700; font-size:.96rem; color:var(--primary-dark); margin-bottom:5px; }
+    .tl-body { background:var(--secondary); border-radius:8px; padding:10px 14px; font-size:.9rem; border:1px solid var(--border); }
 
-    .badge {
-      display: inline-block;
-      padding: 3px 9px;
-      border-radius: 20px;
-      font-size: .78rem;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-    .badge-yes { background: hsl(152,55%,88%); color: var(--primary-dark); }
-    .badge-no  { background: hsl(0,72%,93%);   color: var(--destructive); }
+    /* ══ MOCKUP FRAMES ══ */
+    .mockup-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:20px 0 6px; }
+    .mockup-wrap { border-radius:12px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,.15); border:1px solid var(--border); background:#fff; min-width:300px; }
+    .mockup-bar { background:hsl(150,15%,96%); border-bottom:1px solid var(--border); padding:8px 12px; display:flex; align-items:center; gap:5px; }
+    .mockup-dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+    .mockup-url { flex:1; text-align:center; font-size:.7rem; color:var(--text-muted); background:hsl(150,15%,90%); border-radius:4px; padding:2px 8px; margin:0 6px; font-family:monospace; }
+    .mockup-body { background:hsl(140,20%,98%); padding:14px; }
+    .mockup-caption { font-size:.76rem; color:var(--text-muted); text-align:center; margin-top:6px; font-style:italic; }
 
-    /* ══ TIMELINE ══ */
-    .timeline { position: relative; padding-right: 26px; }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      right: 9px; top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--primary), var(--accent));
-      border-radius: 2px;
-    }
-    .timeline-item { position: relative; margin-bottom: 20px; }
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      right: -20px; top: 11px;
-      width: 14px; height: 14px;
-      background: var(--primary);
-      border: 3px solid #fff;
-      border-radius: 50%;
-      box-shadow: 0 0 0 2px var(--primary);
-    }
-    .tl-title {
-      font-weight: 700;
-      font-size: .96rem;
-      color: var(--primary-dark);
-      margin-bottom: 5px;
-    }
-    .tl-body {
-      background: var(--secondary);
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-size: .9rem;
-      border: 1px solid var(--border);
-    }
+    /* mini UI kit */
+    .mu-card { background:#fff; border:1px solid var(--border); border-radius:10px; box-shadow:0 1px 6px rgba(0,0,0,.07); }
+    .mu-input { border:1px solid var(--border); border-radius:7px; padding:7px 10px; font-size:.82rem; color:var(--text-muted); background:var(--bg); font-family:'Heebo',sans-serif; width:100%; display:block; }
+    .mu-input.ltr { direction:ltr; text-align:left; }
+    .mu-label { font-size:.76rem; font-weight:600; display:block; margin-bottom:3px; color:var(--text); }
+    .mu-select { border:1px solid var(--border); border-radius:7px; padding:7px 28px 7px 10px; font-size:.82rem; color:var(--text-muted); background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat left 8px center; font-family:'Heebo',sans-serif; width:100%; display:block; }
+    .mu-btn { border:none; border-radius:7px; padding:7px 13px; font-family:'Heebo',sans-serif; font-size:.82rem; font-weight:600; cursor:default; white-space:nowrap; display:inline-flex; align-items:center; gap:5px; }
+    .mu-btn-primary { background:var(--primary); color:#fff; }
+    .mu-btn-outline { background:transparent; border:1px solid var(--border); color:var(--text); }
+    .mu-btn-ghost   { background:hsl(152,40%,93%); color:var(--primary-dark); border:none; }
+    .mu-btn-icon    { background:transparent; border:1px solid var(--border); border-radius:7px; width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; cursor:default; flex-shrink:0; }
+    .mu-btn-icon.red { border-color:hsl(0,72%,80%); color:var(--destructive); }
+    .mu-btn-icon.green { background:var(--primary); border-color:var(--primary); color:#fff; }
+    .mu-tab-bar { border-bottom:2px solid var(--border); display:flex; }
+    .mu-tab { padding:8px 14px; font-size:.83rem; cursor:default; border-bottom:2px solid transparent; margin-bottom:-2px; color:var(--text-muted); font-weight:500; }
+    .mu-tab.active { border-bottom-color:var(--primary); color:var(--primary); font-weight:700; }
+    .mu-badge { display:inline-block; padding:2px 8px; border-radius:20px; font-size:.72rem; font-weight:700; }
+    .mu-badge-open  { background:var(--accent); color:var(--primary-dark); }
+    .mu-badge-prog  { background:hsl(152,40%,88%); color:var(--primary-dark); }
+    .mu-badge-done  { background:hsl(150,10%,88%); color:var(--text-muted); }
+    .mu-badge-admin { background:hsl(199,89%,88%); color:hsl(199,89%,25%); }
+    .mu-badge-user  { background:var(--secondary); color:var(--text-muted); border:1px solid var(--border); }
+    .mu-divider { border:none; border-top:1px solid var(--border); margin:10px 0; }
+    .mu-row { display:flex; align-items:center; gap:8px; }
+    .mu-avatar { width:28px; height:28px; border-radius:50%; background:var(--accent); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .mu-chip { background:var(--secondary); border:1px solid var(--border); border-radius:6px; padding:3px 8px; font-size:.75rem; color:var(--text-muted); display:inline-flex; align-items:center; gap:4px; }
+    .mu-timer { font-family:monospace; font-size:.88rem; font-weight:700; color:var(--primary); background:var(--accent); padding:2px 8px; border-radius:6px; }
+    .mu-timer.running { animation:pulse-green 2s infinite; }
+    @keyframes pulse-green { 0%,100%{ opacity:1; } 50%{ opacity:.65; } }
+    .mu-section-heading { text-align:center; font-size:.9rem; font-weight:700; color:var(--text-muted); margin:12px 0 8px; letter-spacing:.3px; }
+    .mu-form-group { margin-bottom:10px; }
+    .mu-header { background:#fff; border-radius:10px; border:1px solid var(--border); padding:12px 16px; display:flex; align-items:center; gap:10px; box-shadow:0 1px 6px rgba(0,0,0,.07); }
+    .mu-logo-area { display:flex; align-items:center; gap:8px; flex:1; }
+    .mu-logo-img { width:34px; height:34px; border-radius:8px; object-fit:contain; background:var(--secondary); }
+    .mu-logo-title { font-weight:700; font-size:.95rem; color:var(--primary-dark); }
+    .mu-logo-user  { font-size:.75rem; color:var(--text-muted); }
+    .mu-actions { display:flex; align-items:center; gap:6px; }
+    svg.ic { display:inline-block; vertical-align:middle; flex-shrink:0; }
 
-    /* ══ BACK TO TOP ══ */
-    #btt {
-      position: fixed;
-      bottom: 20px;
-      left: 16px;
-      width: 44px; height: 44px;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      box-shadow: var(--sh-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .3s, transform .3s;
-      z-index: 100;
-    }
-    #btt.visible { opacity: 1; transform: translateY(0); }
+    /* BACK TO TOP */
+    #btt { position:fixed; bottom:20px; left:16px; width:44px; height:44px; background:var(--primary); color:#fff; border:none; border-radius:50%; font-size:1.1rem; cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,.18); display:flex; align-items:center; justify-content:center; opacity:0; transform:translateY(12px); transition:opacity .3s,transform .3s; z-index:100; }
+    #btt.visible { opacity:1; transform:translateY(0); }
 
-    /* ══ FOOTER ══ */
-    footer {
-      background: var(--primary-dark);
-      color: rgba(255,255,255,.75);
-      text-align: center;
-      padding: 24px 16px;
-      font-size: .85rem;
-    }
-    footer strong { color: #fff; }
+    /* FOOTER */
+    footer { background:var(--primary-dark); color:rgba(255,255,255,.75); text-align:center; padding:24px 16px; font-size:.85rem; }
+    footer strong { color:#fff; }
 
-    /* ══ DESKTOP OVERRIDES (≥ 680px) ══ */
-    @media (min-width: 680px) {
-      body { font-size: 16px; }
-      .hero { padding: 60px 40px 84px; }
-      .hero-logo { width: 160px; }
-      .container { padding: 0 24px 80px; }
-      .toc { padding: 26px 32px; margin-top: -50px; }
-      .toc-body { max-height: none !important; }
-      .toc-arrow { display: none; }
-      .toc ol { columns: 2; column-gap: 36px; margin-top: 12px; }
-      .section { padding: 34px 38px; }
-      .cards { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
-      .steps li { padding: 14px 16px; }
-      #btt { left: 24px; bottom: 28px; }
-    }
-
-    @media (min-width: 960px) {
-      .hero-logo { width: 180px; }
+    /* DESKTOP */
+    @media(min-width:680px){
+      body { font-size:16px; }
+      .hero { padding:60px 40px 84px; }
+      .hero-logo { width:160px; }
+      .container { padding:0 24px 80px; }
+      .toc { padding:26px 32px; margin-top:-50px; }
+      .toc-body { max-height:none !important; }
+      .toc-arrow { display:none; }
+      .toc ol { columns:2; column-gap:36px; margin-top:12px; }
+      .section { padding:34px 38px; }
+      .cards { grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══ HERO ══ -->
 <div class="hero">
-  <img src="src/assets/optimizer-logo.png" alt="Optimizer Logo" class="hero-logo"
-       onerror="this.style.display='none'" />
+  <img src="src/assets/optimizer-logo.png" alt="Optimizer Logo" class="hero-logo" onerror="this.style.display='none'" />
   <h1>מדריך למשתמש</h1>
   <p>כל מה שצריך לדעת על מערכת Optimizer Task – ניהול משימות, מעקב זמנים וניהול לקוחות, בשפה פשוטה וברורה.</p>
   <span class="hero-badge">גרסה 1.0 · 2025</span>
@@ -439,9 +194,8 @@
 
 <div class="container">
 
-  <!-- ══ TOC ══ -->
-  <nav class="toc" id="toc">
-    <div class="toc-toggle" onclick="toggleToc()" role="button" aria-expanded="false" aria-controls="toc-body">
+  <nav class="toc">
+    <div class="toc-toggle" onclick="toggleToc()" role="button" aria-expanded="false">
       <h2>📋 תוכן עניינים</h2>
       <span class="toc-arrow" id="toc-arrow">▾</span>
     </div>
@@ -467,363 +221,689 @@
   <section class="section" id="workflow">
     <div class="section-header">
       <div class="section-icon">🗺️</div>
-      <div>
-        <div class="section-num">מבוא</div>
-        <h2>סדר הפעולות המומלץ</h2>
-      </div>
+      <div><div class="section-num">מבוא</div><h2>סדר הפעולות המומלץ</h2></div>
     </div>
     <p>לפני שמתחילים לעבוד, מומלץ להגדיר את המערכת לפי הסדר הבא. כל שלב בונה על הקודם לו:</p>
-
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="tl-title">1. הרשמה ויצירת ארגון</div>
-        <div class="tl-body">נרשמים למערכת ומזינים את שם הארגון שלכם. ייווצר מספר ארגון ייחודי.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-title">2. הוספת עובדים לארגון</div>
-        <div class="tl-body">מגדירים את חברי הצוות – שם, אימייל וסיסמה ראשונית. ניתן להגדיר מי יהיה מנהל (אדמין).</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-title">3. הוספת לקוחות</div>
-        <div class="tl-body">מזינים את הלקוחות שהצוות עובד מולם, כולל מגבלת שעות חודשית אם רלוונטי.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-title">4. יצירת קטגוריות לכל לקוח</div>
-        <div class="tl-body">לכל לקוח מגדירים קטגוריות עבודה (לדוגמה: פגישות, פיתוח, תמיכה). כך ניתן לנתח את הזמן בצורה מדויקת יותר.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-title">5. פתיחת משימות</div>
-        <div class="tl-body">יוצרים משימות ומקצים אותן לעובדים, לקוחות וקטגוריות עם תאריך יעד.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="tl-title">6. מעקב זמנים ועבודה שוטפת</div>
-        <div class="tl-body">מפעילים שעוני עבודה למשימות ספציפיות, או שעון כללי. בסוף מייצאים דוחות PDF.</div>
+      <div class="timeline-item"><div class="tl-title">1. הרשמה ויצירת ארגון</div><div class="tl-body">נרשמים למערכת ומזינים את שם הארגון שלכם. ייווצר מספר ארגון ייחודי.</div></div>
+      <div class="timeline-item"><div class="tl-title">2. הוספת עובדים לארגון</div><div class="tl-body">מגדירים את חברי הצוות – שם, אימייל וסיסמה ראשונית. ניתן להגדיר מי יהיה מנהל.</div></div>
+      <div class="timeline-item"><div class="tl-title">3. הוספת לקוחות</div><div class="tl-body">מזינים את הלקוחות שהצוות עובד מולם, כולל מגבלת שעות חודשית אם רלוונטי.</div></div>
+      <div class="timeline-item"><div class="tl-title">4. יצירת קטגוריות לכל לקוח</div><div class="tl-body">לכל לקוח מגדירים קטגוריות עבודה (לדוגמה: פגישות, פיתוח, תמיכה).</div></div>
+      <div class="timeline-item"><div class="tl-title">5. פתיחת משימות</div><div class="tl-body">יוצרים משימות ומקצים אותן לעובדים, לקוחות וקטגוריות עם תאריך יעד.</div></div>
+      <div class="timeline-item"><div class="tl-title">6. מעקב זמנים ועבודה שוטפת</div><div class="tl-body">מפעילים שעוני עבודה למשימות ספציפיות, או שעון כללי. בסוף מייצאים דוחות PDF.</div></div>
+    </div>
+
+    <!-- MOCKUP: Main dashboard overview -->
+    <h3>כך נראית האפליקציה</h3>
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:340px;max-width:600px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">optimizer-task.app</span>
+        </div>
+        <div class="mockup-body">
+          <!-- Header card -->
+          <div class="mu-header" style="margin-bottom:10px;">
+            <div class="mu-logo-area">
+              <img src="src/assets/optimizer-logo.png" class="mu-logo-img" onerror="this.style.background='var(--accent)'" />
+              <div><div class="mu-logo-title">Optimizer Task</div><div class="mu-logo-user">שלום, ישראל ישראלי</div></div>
+            </div>
+            <div class="mu-actions">
+              <button class="mu-btn mu-btn-primary" style="font-size:.75rem;padding:6px 10px;">
+                <svg class="ic" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                משימה חדשה
+              </button>
+              <button class="mu-btn-icon">
+                <svg class="ic" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </button>
+              <button class="mu-btn-icon" style="position:relative;">
+                <svg class="ic" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span style="position:absolute;top:-4px;left:-4px;background:var(--destructive);color:#fff;font-size:.6rem;font-weight:700;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;">2</span>
+              </button>
+              <button class="mu-btn-icon">
+                <svg class="ic" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </button>
+            </div>
+          </div>
+          <!-- Main tabs -->
+          <div class="mu-card" style="padding:0;">
+            <div class="mu-tab-bar" style="padding:0 16px;">
+              <div class="mu-tab active">משימות</div>
+              <div class="mu-tab">סיכום זמני עבודה</div>
+            </div>
+            <!-- Filters -->
+            <div style="padding:10px 16px;display:grid;grid-template-columns:1fr 1fr;gap:6px;border-bottom:1px solid var(--border);">
+              <div class="mu-select" style="font-size:.76rem;padding:5px 24px 5px 8px;">סנן לפי לקוח</div>
+              <div class="mu-select" style="font-size:.76rem;padding:5px 24px 5px 8px;">סנן לפי מבצע</div>
+            </div>
+            <!-- Inner tabs -->
+            <div style="padding:0 16px;">
+              <div class="mu-tab-bar">
+                <div class="mu-tab active" style="font-size:.8rem;">משימות פתוחות (3)</div>
+                <div class="mu-tab" style="font-size:.8rem;">משימות שבוצעו (1)</div>
+              </div>
+            </div>
+            <!-- Tasks -->
+            <div style="padding:8px 12px 14px;">
+              <div class="mu-section-heading">משימות להיום (2)</div>
+              <!-- Task card 1 -->
+              <div style="border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;background:#fff;">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+                  <div style="flex:1;min-width:0;">
+                    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                      <span style="font-size:.72rem;color:var(--text-muted);font-family:monospace;">#12</span>
+                      <span style="font-weight:700;font-size:.88rem;">עדכון חוזה שנתי</span>
+                      <span class="mu-badge mu-badge-open">פתוח</span>
+                    </div>
+                    <div style="font-size:.78rem;color:var(--text-muted);margin-top:4px;display:flex;align-items:center;gap:4px;">
+                      <svg class="ic" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                      לקוח א׳ בע"מ
+                    </div>
+                    <div style="font-size:.76rem;color:var(--text-muted);margin-top:3px;display:flex;align-items:center;gap:4px;">
+                      <svg class="ic" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                      09/05/2025 · מטפל: שרה כהן
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:4px;flex-shrink:0;">
+                    <button class="mu-btn-icon green" style="width:26px;height:26px;">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </button>
+                    <button class="mu-btn-icon" style="width:26px;height:26px;">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    </button>
+                    <button class="mu-btn-icon" style="width:26px;height:26px;">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- Task card 2 with timer -->
+              <div style="border:1px solid var(--primary);border-radius:8px;padding:10px 12px;margin-bottom:8px;background:hsl(152,40%,98%);">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+                  <div style="flex:1;min-width:0;">
+                    <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                      <span style="font-size:.72rem;color:var(--text-muted);font-family:monospace;">#13</span>
+                      <span style="font-weight:700;font-size:.88rem;">ישיבת צוות שבועית</span>
+                      <span class="mu-badge mu-badge-prog">בטיפול</span>
+                      <span class="mu-timer running">00:23:41</span>
+                    </div>
+                    <div style="font-size:.78rem;color:var(--text-muted);margin-top:4px;display:flex;align-items:center;gap:4px;">
+                      <svg class="ic" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                      לקוח ב׳ בע"מ
+                    </div>
+                  </div>
+                  <div style="display:flex;gap:4px;flex-shrink:0;">
+                    <button class="mu-btn-icon red" style="width:26px;height:26px;">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="mu-section-heading">משימות עתידיות (1)</div>
+              <div style="border:1px solid var(--border);border-radius:8px;padding:10px 12px;background:#fff;">
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                  <span style="font-size:.72rem;color:var(--text-muted);font-family:monospace;">#14</span>
+                  <span style="font-weight:700;font-size:.88rem;">הכנת הצעת מחיר</span>
+                  <span class="mu-badge mu-badge-open">פתוח</span>
+                </div>
+                <div style="font-size:.76rem;color:var(--text-muted);margin-top:3px;display:flex;align-items:center;gap:4px;">
+                  <svg class="ic" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  20/05/2025 · מטפל: דוד לוי
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <p class="mockup-caption">מסך ראשי – רשימת משימות, שעון פעיל (ירוק) ואזורי סינון</p>
   </section>
 
   <!-- ══ ORG ══ -->
   <section class="section" id="org">
     <div class="section-header">
       <div class="section-icon">🏢</div>
-      <div>
-        <div class="section-num">שלב 1</div>
-        <h2>הקמת ארגון</h2>
+      <div><div class="section-num">שלב 1</div><h2>הקמת ארגון</h2></div>
+    </div>
+    <p>הצעד הראשון הוא ליצור את הארגון שלכם במערכת. הארגון הוא ה"בית" של כל הנתונים.</p>
+
+    <!-- MOCKUP: Registration -->
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:300px;max-width:420px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">optimizer-task.app/auth</span>
+        </div>
+        <div class="mockup-body" style="display:flex;justify-content:center;">
+          <div class="mu-card" style="padding:20px;width:100%;max-width:340px;">
+            <div style="text-align:center;margin-bottom:16px;">
+              <img src="src/assets/optimizer-logo.png" style="height:40px;margin:0 auto 10px;border-radius:8px;" onerror="this.style.display='none'" />
+              <div style="font-size:1.1rem;font-weight:700;color:var(--primary-dark);">Optimizer Task</div>
+              <div style="font-size:.8rem;color:var(--text-muted);margin-top:2px;">רישום עסק חדש</div>
+            </div>
+            <div style="font-size:.76rem;color:var(--text-muted);background:var(--secondary);border-radius:6px;padding:8px 10px;margin-bottom:12px;line-height:1.5;">רשום את העסק שלך וצור משתמש מנהל ראשון. מספר העסק ישמש כמזהה הארגון.</div>
+            <div class="mu-form-group"><label class="mu-label">שם העסק *</label><div class="mu-input" style="color:var(--text);">סטודיו ישראלי</div></div>
+            <div class="mu-form-group"><label class="mu-label">מספר עסק / ח.פ *</label><div class="mu-input ltr" style="color:var(--text);">305587537</div></div>
+            <div class="mu-form-group"><label class="mu-label">שם מלא של המנהל *</label><div class="mu-input">הזן שם מלא</div></div>
+            <div class="mu-form-group"><label class="mu-label">אימייל *</label><div class="mu-input ltr">your@email.com</div></div>
+            <div class="mu-form-group"><label class="mu-label">סיסמה *</label><div class="mu-input ltr">••••••••</div></div>
+            <button class="mu-btn mu-btn-primary" style="width:100%;justify-content:center;margin-top:4px;padding:9px;">רשום עסק</button>
+            <div style="text-align:center;margin-top:10px;font-size:.78rem;color:var(--primary);">חזרה להתחברות</div>
+          </div>
+        </div>
       </div>
     </div>
-    <p>הצעד הראשון הוא ליצור את הארגון שלכם במערכת. הארגון הוא ה"בית" של כל הנתונים – משימות, לקוחות ועובדים.</p>
+    <p class="mockup-caption">מסך הרשמה – יצירת ארגון חדש במערכת</p>
 
     <h3>איך נרשמים ומקימים ארגון?</h3>
     <ol class="steps">
       <li>היכנסו לכתובת המערכת ולחצו על <strong>הרשמה</strong>.</li>
-      <li>הזינו את <strong>שם הארגון</strong> שלכם (לדוגמה: "סטודיו אדום").</li>
-      <li>הזינו את <strong>האימייל</strong> והסיסמה שלכם.</li>
-      <li>לחצו על <strong>הרשמה</strong> – המערכת תיצור מספר ארגון ייחודי אוטומטית.</li>
-      <li>תועברו ישירות למסך הראשי של האפליקציה.</li>
+      <li>הזינו <strong>שם העסק</strong> ו<strong>מספר עסק / ח.פ</strong>.</li>
+      <li>הזינו <strong>שם מלא</strong>, <strong>אימייל</strong> וסיסמה.</li>
+      <li>לחצו <strong>רשום עסק</strong> – המערכת תיצור מספר ארגון ייחודי.</li>
+      <li>תועברו ישירות למסך הראשי.</li>
     </ol>
-
-    <div class="tip-box">
-      <span class="box-icon">💡</span>
-      <div class="box-text">
-        <strong>טיפ שימושי</strong>
-        שמרו את מספר הארגון – העובדים יצטרכו אותו כדי להצטרף לאחר מכן.
-      </div>
-    </div>
-
-    <div class="info-box">
-      <span class="box-icon">ℹ️</span>
-      <div class="box-text">
-        <strong>כניסה חוזרת</strong>
-        בכניסות עתידיות הזינו אימייל וסיסמה בלבד – המערכת תזהה את הארגון אוטומטית.
-      </div>
-    </div>
+    <div class="tip-box"><span class="box-icon">💡</span><div class="box-text"><strong>טיפ שימושי</strong>שמרו את מספר הארגון – העובדים יצטרכו אותו כדי להצטרף.</div></div>
+    <div class="info-box"><span class="box-icon">ℹ️</span><div class="box-text"><strong>כניסה חוזרת</strong>בכניסות עתידיות הזינו מספר ארגון, שם משתמש וסיסמה בלבד.</div></div>
   </section>
 
   <!-- ══ EMPLOYEES ══ -->
   <section class="section" id="employees">
     <div class="section-header">
       <div class="section-icon">👥</div>
-      <div>
-        <div class="section-num">שלב 2</div>
-        <h2>הקמת עובדים (חברי צוות)</h2>
+      <div><div class="section-num">שלב 2</div><h2>הקמת עובדים (חברי צוות)</h2></div>
+    </div>
+    <p>לאחר יצירת הארגון, הוסיפו את חברי הצוות. רק <strong>מנהל (אדמין)</strong> יכול לבצע פעולה זו.</p>
+
+    <!-- MOCKUP: Settings – Users tab -->
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:320px;max-width:520px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">הגדרות</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mu-card" style="padding:0;">
+            <div style="padding:14px 16px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-weight:700;font-size:.95rem;">הגדרות</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div class="mu-tab-bar" style="padding:0 16px;">
+              <div class="mu-tab">לקוחות</div>
+              <div class="mu-tab active">משתמשים</div>
+            </div>
+            <div style="padding:14px 16px;">
+              <!-- Add user form -->
+              <div style="background:var(--secondary);border-radius:8px;padding:12px;margin-bottom:14px;">
+                <div style="font-size:.82rem;font-weight:700;color:var(--primary-dark);margin-bottom:10px;display:flex;align-items:center;gap:6px;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                  הוספת משתמש חדש לארגון
+                </div>
+                <div class="mu-form-group"><div class="mu-input" style="margin-bottom:6px;">שם מלא *</div></div>
+                <div class="mu-form-group"><div class="mu-input ltr" style="margin-bottom:6px;">אימייל *</div></div>
+                <div class="mu-form-group"><div class="mu-input ltr" style="margin-bottom:6px;">סיסמה ראשונית * (6+ תווים)</div></div>
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
+                  <div style="width:14px;height:14px;border:2px solid var(--border);border-radius:3px;flex-shrink:0;"></div>
+                  <span style="font-size:.8rem;">הגדר כמנהל (Admin)</span>
+                </div>
+                <button class="mu-btn mu-btn-primary" style="width:100%;justify-content:center;padding:8px;">הוסף משתמש</button>
+              </div>
+              <!-- Members list -->
+              <div style="font-size:.82rem;font-weight:700;color:var(--text-muted);margin-bottom:8px;">חברי הארגון (2)</div>
+              <!-- Member 1 -->
+              <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;margin-bottom:6px;">
+                <div class="mu-avatar"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--primary-dark)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:.83rem;font-weight:600;color:var(--text);">ישראל ישראלי</div>
+                  <div style="font-size:.73rem;color:var(--text-muted);">israel@example.com</div>
+                </div>
+                <span class="mu-badge mu-badge-admin">מנהל</span>
+              </div>
+              <!-- Member 2 -->
+              <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:#fff;">
+                <div class="mu-avatar"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--primary-dark)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <div style="flex:1;min-width:0;">
+                  <div style="font-size:.83rem;font-weight:600;color:var(--text);">שרה כהן</div>
+                  <div style="font-size:.73rem;color:var(--text-muted);">sarah@example.com</div>
+                </div>
+                <span class="mu-badge mu-badge-user">משתמש</span>
+                <button class="mu-btn-icon" style="width:26px;height:26px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+                </button>
+                <button class="mu-btn-icon red" style="width:26px;height:26px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p>לאחר יצירת הארגון, הוסיפו את חברי הצוות שלכם. רק <strong>מנהל (אדמין)</strong> יכול לבצע פעולה זו.</p>
+    <p class="mockup-caption">חלון הגדרות – לשונית ניהול משתמשים</p>
 
     <h3>איך מוסיפים עובד?</h3>
     <ol class="steps">
-      <li>לחצו על כפתור <strong>הגדרות</strong> (גלגל השיניים) בפינה הימנית העליונה.</li>
-      <li>עברו ללשונית <strong>ניהול משתמשים</strong>.</li>
-      <li>לחצו על <strong>הוסף חבר צוות</strong>.</li>
+      <li>לחצו על <strong>הגדרות</strong> (גלגל השיניים) בפינה הימנית העליונה.</li>
+      <li>עברו ללשונית <strong>משתמשים</strong>.</li>
       <li>מלאו <strong>שם מלא</strong>, <strong>אימייל</strong> ו<strong>סיסמה ראשונית</strong> (לפחות 6 תווים).</li>
       <li>בחרו האם העובד יהיה <strong>מנהל</strong> או <strong>משתמש רגיל</strong>.</li>
-      <li>לחצו <strong>הוסף</strong> – העובד יקבל גישה עם הפרטים שהזנתם.</li>
+      <li>לחצו <strong>הוסף משתמש</strong>.</li>
     </ol>
-
-    <div class="tip-box">
-      <span class="box-icon">💡</span>
-      <div class="box-text">
-        <strong>סיסמה זמנית</strong>
-        בפעם הראשונה שעובד נכנס, הוא יתבקש לשנות את סיסמתו לסיסמה אישית חדשה.
-      </div>
-    </div>
-
-    <div class="warn-box">
-      <span class="box-icon">⚠️</span>
-      <div class="box-text">
-        <strong>שכחתם לשלוח סיסמה?</strong>
-        לחצו על <strong>הגדר סיסמה זמנית</strong> לצד שם העובד בכל עת.
-      </div>
-    </div>
-
-    <h3>מה כל עובד יכול לעשות?</h3>
-    <div class="cards">
-      <div class="card">
-        <div class="card-icon">✅</div>
-        <h4>יצירת משימות</h4>
-        <p>כל עובד יכול ליצור משימות ולהקצות אותן לעצמו או לאחרים.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🕐</div>
-        <h4>מעקב זמנים</h4>
-        <p>כל עובד יכול להפעיל שעון עבודה לכל משימה שמוקצית אליו.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔔</div>
-        <h4>קבלת התראות</h4>
-        <p>עובד מקבל התראה כשמשימה חדשה מוקצית אליו.</p>
-      </div>
-    </div>
+    <div class="tip-box"><span class="box-icon">💡</span><div class="box-text"><strong>סיסמה זמנית</strong>בפעם הראשונה שעובד נכנס, הוא יתבקש לשנות סיסמה לסיסמה אישית.</div></div>
+    <div class="warn-box"><span class="box-icon">⚠️</span><div class="box-text"><strong>שכחתם לשלוח סיסמה?</strong>לחצו על סמל המפתח 🔑 לצד שם העובד ברשימה.</div></div>
   </section>
 
   <!-- ══ CLIENTS ══ -->
   <section class="section" id="clients">
     <div class="section-header">
       <div class="section-icon">🤝</div>
-      <div>
-        <div class="section-num">שלב 3</div>
-        <h2>הקמת לקוחות</h2>
+      <div><div class="section-num">שלב 3</div><h2>הקמת לקוחות</h2></div>
+    </div>
+    <p>לקוחות הם הגורמים שהצוות עובד עבורם. כל משימה ושעת עבודה מוקצות ללקוח מסוים.</p>
+
+    <!-- MOCKUP: Settings – Clients tab -->
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:300px;max-width:480px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">הגדרות – לקוחות</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mu-card" style="padding:0;">
+            <div class="mu-tab-bar" style="padding:0 16px;">
+              <div class="mu-tab active">לקוחות</div>
+              <div class="mu-tab">משתמשים</div>
+            </div>
+            <div style="padding:14px 16px;">
+              <!-- Add client -->
+              <div style="display:flex;gap:8px;margin-bottom:14px;">
+                <div class="mu-input" style="flex:1;">שם לקוח חדש</div>
+                <button class="mu-btn mu-btn-primary" style="padding:7px 12px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+              </div>
+              <!-- Client list -->
+              <!-- Client 1 expanded -->
+              <div style="border:1px solid var(--primary);border-radius:8px;margin-bottom:8px;overflow:hidden;">
+                <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:hsl(152,40%,96%);">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  <span style="font-weight:600;font-size:.88rem;flex:1;">לקוח א׳ בע"מ</span>
+                  <div style="display:flex;align-items:center;gap:4px;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <div class="mu-input ltr" style="width:58px;height:26px;padding:3px 6px;font-size:.76rem;text-align:center;">40:00</div>
+                  </div>
+                  <button class="mu-btn-icon red" style="width:24px;height:24px;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                  </button>
+                </div>
+                <!-- Categories sub-section -->
+                <div style="background:#fff;padding:8px 12px;border-top:1px solid var(--border);font-size:.78rem;">
+                  <div style="color:var(--text-muted);margin-bottom:6px;font-weight:600;">קטגוריות:</div>
+                  <div style="display:flex;flex-wrap:wrap;gap:5px;">
+                    <span class="mu-chip">פגישות</span>
+                    <span class="mu-chip">פיתוח</span>
+                    <span class="mu-chip">תמיכה</span>
+                    <button class="mu-btn mu-btn-ghost" style="font-size:.72rem;padding:3px 8px;">+ הוסף קטגוריה</button>
+                  </div>
+                </div>
+              </div>
+              <!-- Client 2 collapsed -->
+              <div style="border:1px solid var(--border);border-radius:8px;padding:9px 12px;display:flex;align-items:center;gap:8px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                <span style="font-weight:600;font-size:.88rem;flex:1;color:var(--text);">לקוח ב׳ בע"מ</span>
+                <div style="display:flex;align-items:center;gap:4px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <div class="mu-input ltr" style="width:58px;height:26px;padding:3px 6px;font-size:.76rem;text-align:center;color:var(--text-muted);">hh:mm</div>
+                </div>
+                <button class="mu-btn-icon red" style="width:24px;height:24px;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p>לקוחות הם הגורמים שהצוות שלכם עובד עבורם. כל משימה ושעת עבודה יוקצו ללקוח מסוים.</p>
+    <p class="mockup-caption">לשונית לקוחות – הוספה, מגבלת שעות וקטגוריות</p>
 
     <h3>איך מוסיפים לקוח?</h3>
     <ol class="steps">
-      <li>פתחו את <strong>הגדרות</strong> (גלגל השיניים).</li>
-      <li>עברו ללשונית <strong>לקוחות</strong>.</li>
-      <li>לחצו <strong>הוסף לקוח</strong> והזינו את שם הלקוח.</li>
-      <li>(אופציונלי) הגדירו <strong>מגבלת שעות חודשית</strong> בפורמט שעות:דקות, לדוגמה <code>40:00</code>.</li>
-      <li>לחצו <strong>שמור</strong>.</li>
+      <li>פתחו <strong>הגדרות</strong> ← לשונית <strong>לקוחות</strong>.</li>
+      <li>הזינו את שם הלקוח בשדה ולחצו <strong>+</strong>.</li>
+      <li>(אופציונלי) הגדירו <strong>מגבלת שעות חודשית</strong> בפורמט <code>40:00</code>.</li>
     </ol>
-
-    <div class="info-box">
-      <span class="box-icon">ℹ️</span>
-      <div class="box-text">
-        <strong>מגבלת שעות – התראות אוטומטיות</strong>
-        כשמתקרבים לגבול השעות, המערכת תתריע:
-        <br/>• <strong>צהוב</strong> – נותרו 15% מהשעות.
-        <br/>• <strong>אדום</strong> – נותרו 5% בלבד.
-        <br/>• <strong>קריטי</strong> – חרגתם ב-5%+.
-      </div>
-    </div>
-
-    <div class="warn-box">
-      <span class="box-icon">⚠️</span>
-      <div class="box-text">
-        <strong>מחיקת לקוח</strong>
-        לא ניתן למחוק לקוח שיש לו משימות פתוחות. יש לסגור אותן קודם.
-      </div>
-    </div>
+    <div class="info-box"><span class="box-icon">ℹ️</span><div class="box-text"><strong>מגבלת שעות – התראות אוטומטיות</strong>• <strong>צהוב</strong> – נותרו 15% · <strong>אדום</strong> – נותרו 5% · <strong>קריטי</strong> – חרגתם ב-5%+</div></div>
+    <div class="warn-box"><span class="box-icon">⚠️</span><div class="box-text"><strong>מחיקת לקוח</strong>לא ניתן למחוק לקוח שיש לו משימות פתוחות.</div></div>
   </section>
 
   <!-- ══ CATEGORIES ══ -->
   <section class="section" id="categories">
     <div class="section-header">
       <div class="section-icon">🏷️</div>
-      <div>
-        <div class="section-num">שלב 4</div>
-        <h2>הקמת קטגוריות לכל לקוח</h2>
-      </div>
+      <div><div class="section-num">שלב 4</div><h2>הקמת קטגוריות לכל לקוח</h2></div>
     </div>
-    <p>קטגוריות עוזרות לחלק את הזמן לסוגי עבודה שונים. לדוגמה: <em>פגישות</em>, <em>פיתוח</em>, <em>תמיכה</em>.</p>
-
+    <p>קטגוריות מחלקות את הזמן לסוגי עבודה. לדוגמה: <em>פגישות</em>, <em>פיתוח</em>, <em>תמיכה</em>. הקטגוריות מוצגות בדוח הסיכום.</p>
     <h3>איך מוסיפים קטגוריה?</h3>
     <ol class="steps">
       <li>פתחו <strong>הגדרות</strong> ← <strong>לקוחות</strong>.</li>
-      <li>לחצו על <strong>קטגוריות</strong> ליד הלקוח הרצוי.</li>
-      <li>לחצו <strong>הוסף קטגוריה</strong> והזינו שם (לדוגמה: "ייעוץ").</li>
-      <li>לחצו <strong>שמור</strong>.</li>
+      <li>לחצו על שם הלקוח כדי לפתוח את הפרטים שלו.</li>
+      <li>לחצו <strong>+ הוסף קטגוריה</strong> והזינו שם.</li>
       <li>חזרו על הפעולה לכל קטגוריה נוספת.</li>
     </ol>
-
-    <div class="tip-box">
-      <span class="box-icon">💡</span>
-      <div class="box-text">
-        <strong>מתי משתמשים בקטגוריות?</strong>
-        כשיוצרים משימה בוחרים קטגוריה – כך בדוח הסיכום רואים כמה זמן הושקע בכל סוג עבודה לכל לקוח.
-      </div>
-    </div>
+    <div class="tip-box"><span class="box-icon">💡</span><div class="box-text"><strong>מתי משתמשים בקטגוריות?</strong>כשפותחים משימה, בוחרים קטגוריה – כך ניתן לראות בדוח כמה זמן הוקדש לכל סוג עבודה אצל כל לקוח.</div></div>
   </section>
 
   <!-- ══ TASKS ══ -->
   <section class="section" id="tasks">
     <div class="section-header">
       <div class="section-icon">📝</div>
-      <div>
-        <div class="section-num">שלב 5</div>
-        <h2>פתיחת משימה חדשה</h2>
+      <div><div class="section-num">שלב 5</div><h2>פתיחת משימה חדשה</h2></div>
+    </div>
+    <p>משימה היא יחידת עבודה – פעולה שצריך לבצע עבור לקוח. ניתן לפתוח משימות ולהקצות אותן לחברי הצוות.</p>
+
+    <!-- MOCKUP: Task dialog -->
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:300px;max-width:460px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">משימה חדשה</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mu-card" style="padding:0;">
+            <div style="padding:14px 16px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-weight:700;font-size:.95rem;">משימה חדשה</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div style="padding:14px 16px;display:flex;flex-direction:column;gap:10px;">
+              <div><label class="mu-label">כותרת המשימה *</label><div class="mu-input" style="color:var(--text);">עדכון חוזה שנתי</div></div>
+              <div><label class="mu-label">שם הלקוח</label><div class="mu-select" style="color:var(--text);">לקוח א׳ בע"מ</div></div>
+              <div><label class="mu-label">קטגוריה *</label><div class="mu-select" style="color:var(--text);">פגישות</div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                <div><label class="mu-label">יעד למשימה</label>
+                  <div style="border:1px solid var(--border);border-radius:7px;padding:7px 10px;font-size:.82rem;color:var(--text);display:flex;align-items:center;gap:6px;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    15.05.2025
+                  </div>
+                </div>
+                <div><label class="mu-label">מטפל המשימה</label><div class="mu-select" style="color:var(--text);">שרה כהן</div></div>
+              </div>
+              <div><label class="mu-label">תיאור המשימה</label><div style="border:1px solid var(--border);border-radius:7px;padding:7px 10px;font-size:.82rem;color:var(--text-muted);min-height:52px;">תאר את המשימה...</div></div>
+              <div style="display:flex;align-items:center;gap:6px;">
+                <div style="width:14px;height:14px;border:2px solid var(--border);border-radius:3px;flex-shrink:0;"></div>
+                <span style="font-size:.8rem;">משימה חוזרת</span>
+              </div>
+            </div>
+            <div style="padding:12px 16px;border-top:1px solid var(--border);display:flex;gap:8px;">
+              <button class="mu-btn mu-btn-primary" style="flex:1;justify-content:center;padding:9px;">צור משימה</button>
+              <button class="mu-btn mu-btn-outline">ביטול</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p>משימה היא יחידת עבודה – כל פעולה שצריך לבצע עבור לקוח. ניתן לפתוח משימות ולהקצות אותן לחברי הצוות.</p>
+    <p class="mockup-caption">טופס יצירת משימה חדשה</p>
 
     <h3>איך פותחים משימה?</h3>
     <ol class="steps">
-      <li>לחצו על הכפתור הירוק <strong>+ משימה חדשה</strong> בראש המסך.</li>
-      <li>הזינו <strong>כותרת</strong> (חובה) – שם קצר שמתאר את המשימה.</li>
-      <li>בחרו <strong>לקוח</strong> מהרשימה.</li>
-      <li>בחרו <strong>קטגוריה</strong> (אם הגדרתם קטגוריות ללקוח זה).</li>
-      <li>הזינו <strong>תיאור</strong> – פרטים נוספים (אופציונלי).</li>
-      <li>קבעו <strong>תאריך יעד</strong> לביצוע.</li>
-      <li>בחרו את <strong>המטפל</strong> – מי אחראי לביצוע המשימה.</li>
-      <li>הגדירו <strong>חזרתיות</strong> אם המשימה חוזרת: יומי / שבועי / חודשי.</li>
-      <li>ניתן לצרף <strong>קבצים</strong> ומסמכים למשימה.</li>
-      <li>לחצו <strong>שמור</strong>.</li>
+      <li>לחצו על <strong>+ משימה חדשה</strong> בראש המסך.</li>
+      <li>הזינו <strong>כותרת</strong> (חובה).</li>
+      <li>בחרו <strong>לקוח</strong> ו<strong>קטגוריה</strong>.</li>
+      <li>קבעו <strong>תאריך יעד</strong> ובחרו <strong>מטפל</strong>.</li>
+      <li>הזינו <strong>תיאור</strong> (אופציונלי), הגדירו <strong>חזרתיות</strong> וצרפו <strong>קבצים</strong> במידת הצורך.</li>
+      <li>לחצו <strong>צור משימה</strong>.</li>
     </ol>
-
-    <h3>סטטוס המשימה</h3>
     <div class="cards">
-      <div class="card">
-        <div class="card-icon">🟢</div>
-        <h4>פתוח</h4>
-        <p>המשימה נוצרה ומחכה לטיפול.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🔵</div>
-        <h4>בטיפול</h4>
-        <p>המשימה בתהליך – מישהו עובד עליה.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">✅</div>
-        <h4>הושלם</h4>
-        <p>המשימה בוצעה בהצלחה ונסגרה.</p>
-      </div>
+      <div class="card"><div class="card-icon">🟢</div><h4>פתוח</h4><p>המשימה נוצרה ומחכה לטיפול.</p></div>
+      <div class="card"><div class="card-icon">🔵</div><h4>בטיפול</h4><p>מישהו עובד על המשימה כרגע.</p></div>
+      <div class="card"><div class="card-icon">✅</div><h4>הושלם</h4><p>המשימה בוצעה ונסגרה.</p></div>
     </div>
-
-    <h3>פעולות על משימה</h3>
-    <ul class="steps">
-      <li><strong>ערוך</strong> – שינוי כל פרט במשימה בכל שלב.</li>
-      <li><strong>סמן כהושלם</strong> – סוגר את המשימה ומתעד מי ומתי סיים.</li>
-      <li><strong>מחק</strong> – זמין רק ליוצר המשימה (או למנהל).</li>
-      <li><strong>הפעל שעון</strong> – מתחיל מדידת זמן למשימה (ראו פרק הבא).</li>
-    </ul>
-
-    <div class="tip-box">
-      <span class="box-icon">💡</span>
-      <div class="box-text">
-        <strong>משימות עתידיות</strong>
-        המשימות ממוינות לפי תאריך: משימות היום (כולל משימות שעבר מועדן) מופיעות ראשונות, ואחריהן משימות עתידיות.
-      </div>
-    </div>
+    <div class="tip-box"><span class="box-icon">💡</span><div class="box-text"><strong>משימות חוזרות</strong>סמנו "משימה חוזרת" כדי שהמשימה תיפתח מחדש אוטומטית: יומי / שבועי / חודשי.</div></div>
   </section>
 
   <!-- ══ WORK CLOCK ══ -->
   <section class="section" id="workclock">
     <div class="section-header">
       <div class="section-icon">⏱️</div>
-      <div>
-        <div class="section-num">שלב 6א</div>
-        <h2>שעון עבודה (לפי משימה)</h2>
+      <div><div class="section-num">שלב 6א</div><h2>שעון עבודה (לפי משימה)</h2></div>
+    </div>
+    <p>שעון העבודה מודד בדיוק כמה זמן הושקע בכל משימה ספציפית.</p>
+
+    <!-- MOCKUP: Task card with active timer -->
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:280px;max-width:440px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">שעון עבודה פעיל</span>
+        </div>
+        <div class="mockup-body">
+          <!-- Task card - timer off -->
+          <div style="font-size:.76rem;color:var(--text-muted);margin-bottom:6px;font-weight:600;">לפני הפעלה:</div>
+          <div style="border:1px solid var(--border);border-radius:8px;padding:12px;background:#fff;margin-bottom:14px;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+              <div>
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                  <span style="font-size:.72rem;color:var(--text-muted);font-family:monospace;">#13</span>
+                  <span style="font-weight:700;font-size:.88rem;">ישיבת צוות שבועית</span>
+                  <span class="mu-badge mu-badge-open">פתוח</span>
+                </div>
+                <div style="font-size:.76rem;color:var(--text-muted);margin-top:4px;">לקוח ב׳ בע"מ · פגישות</div>
+              </div>
+              <div style="display:flex;gap:4px;">
+                <button class="mu-btn-icon green" style="width:28px;height:28px;" title="הפעל שעון">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+                <button class="mu-btn-icon" style="width:28px;height:28px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+                <button class="mu-btn-icon" style="width:28px;height:28px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Task card - timer ON -->
+          <div style="font-size:.76rem;color:var(--text-muted);margin-bottom:6px;font-weight:600;">לאחר לחיצה על ▶ – השעון פועל:</div>
+          <div style="border:2px solid var(--primary);border-radius:8px;padding:12px;background:hsl(152,40%,97%);">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+              <div>
+                <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                  <span style="font-size:.72rem;color:var(--text-muted);font-family:monospace;">#13</span>
+                  <span style="font-weight:700;font-size:.88rem;">ישיבת צוות שבועית</span>
+                  <span class="mu-badge mu-badge-prog">בטיפול</span>
+                </div>
+                <div style="font-size:.76rem;color:var(--text-muted);margin-top:4px;">לקוח ב׳ בע"מ · פגישות</div>
+                <div style="margin-top:6px;display:flex;align-items:center;gap:6px;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" style="animation:pulse-green 1.5s infinite;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span class="mu-timer running">00:23:41</span>
+                  <span style="font-size:.75rem;color:var(--primary);">השעון פועל</span>
+                </div>
+              </div>
+              <button class="mu-btn-icon red" style="width:30px;height:30px;" title="עצור שעון">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p>שעון העבודה מאפשר למדוד בדיוק כמה זמן הושקע בכל משימה ספציפית.</p>
+    <p class="mockup-caption">כרטיס משימה – לפני ואחרי הפעלת שעון העבודה</p>
 
     <h3>איך מפעילים שעון עבודה?</h3>
     <ol class="steps">
-      <li>מצאו את המשימה הרצויה ברשימת המשימות.</li>
-      <li>לחצו על <strong>▶ הפעל שעון</strong> שמופיע על כרטיס המשימה.</li>
-      <li>השעון יתחיל לספור – הזמן מתעדכן בזמן אמת.</li>
-      <li>כשסיימתם, לחצו <strong>■ עצור שעון</strong> – הזמן יישמר אוטומטית.</li>
+      <li>מצאו את המשימה ברשימה.</li>
+      <li>לחצו על <strong>▶</strong> (כפתור הפעלה ירוק) על כרטיס המשימה.</li>
+      <li>השעון יתחיל לספור ויוצג על הכרטיס.</li>
+      <li>כשסיימתם, לחצו <strong>■</strong> (כפתור עצירה אדום) – הזמן יישמר אוטומטית.</li>
     </ol>
-
-    <div class="warn-box">
-      <span class="box-icon">⚠️</span>
-      <div class="box-text">
-        <strong>התראת שעתיים</strong>
-        אם השעון רץ מעל שעתיים ברציפות, המערכת תשלח התראה אוטומטית – כדי שלא תשכחו לעצור אותו.
-      </div>
-    </div>
-
-    <div class="info-box">
-      <span class="box-icon">ℹ️</span>
-      <div class="box-text">
-        <strong>כל הזמנים נשמרים</strong>
-        כל מדידה נשמרת ומוצגת בדוח הסיכום החודשי, מחולקת לפי לקוח וקטגוריה.
-      </div>
-    </div>
+    <div class="warn-box"><span class="box-icon">⚠️</span><div class="box-text"><strong>התראת שעתיים</strong>אם השעון רץ מעל שעתיים ברציפות, המערכת תשלח התראה אוטומטית.</div></div>
   </section>
 
   <!-- ══ GENERAL CLOCK ══ -->
   <section class="section" id="generalclock">
     <div class="section-header">
       <div class="section-icon">🕰️</div>
-      <div>
-        <div class="section-num">שלב 6ב</div>
-        <h2>שעון כללי (זמן כללי)</h2>
+      <div><div class="section-num">שלב 6ב</div><h2>שעון כללי (זמן כללי)</h2></div>
+    </div>
+    <p>השעון הכללי מודד זמן עבודה שאינו קשור למשימה ספציפית – ישיבות, מיילים, עבודה אדמיניסטרטיבית.</p>
+
+    <!-- MOCKUP: Header with general clock -->
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:280px;max-width:520px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">שעון כללי – כפתור בהדר</span>
+        </div>
+        <div class="mockup-body">
+          <div style="font-size:.76rem;color:var(--text-muted);margin-bottom:6px;font-weight:600;">השעון מופסק – לחצו ▶ להפעלה:</div>
+          <div class="mu-header" style="margin-bottom:12px;">
+            <div class="mu-logo-area">
+              <img src="src/assets/optimizer-logo.png" class="mu-logo-img" onerror="this.style.background='var(--accent)'" />
+              <div><div class="mu-logo-title">Optimizer Task</div></div>
+            </div>
+            <div class="mu-actions">
+              <button class="mu-btn mu-btn-outline" style="font-size:.75rem;padding:5px 10px;gap:4px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                זמן כללי
+              </button>
+            </div>
+          </div>
+          <div style="font-size:.76rem;color:var(--text-muted);margin-bottom:6px;font-weight:600;">השעון פועל – לחצו ■ לעצירה:</div>
+          <div class="mu-header">
+            <div class="mu-logo-area">
+              <img src="src/assets/optimizer-logo.png" class="mu-logo-img" onerror="this.style.background='var(--accent)'" />
+              <div><div class="mu-logo-title">Optimizer Task</div></div>
+            </div>
+            <div class="mu-actions">
+              <div style="display:flex;align-items:center;gap:6px;background:var(--accent);border-radius:8px;padding:5px 10px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--primary-dark)" stroke-width="2" style="animation:pulse-green 1.5s infinite;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span style="font-family:monospace;font-size:.85rem;font-weight:700;color:var(--primary-dark);">00:12:05</span>
+                <button class="mu-btn" style="background:var(--primary);color:#fff;padding:3px 8px;font-size:.72rem;border-radius:5px;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                  עצור
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p>השעון הכללי מיועד למדוד זמן עבודה שאינו קשור למשימה ספציפית – לדוגמה ישיבת צוות, מיילים, או עבודה אדמיניסטרטיבית.</p>
+    <p class="mockup-caption">כפתור השעון הכללי בהדר – לפני ואחרי הפעלה</p>
 
     <h3>איך מפעילים את השעון הכללי?</h3>
     <ol class="steps">
-      <li>בפינה הימנית העליונה תמצאו את <strong>כפתור השעון הכללי</strong> – הוא תמיד גלוי.</li>
-      <li>לחצו עליו כדי <strong>להפעיל</strong> את הספירה.</li>
-      <li>הזמן יוצג על המסך בפורמט שעות:דקות:שניות.</li>
-      <li>לחצו שוב כדי <strong>לעצור</strong> ולשמור את הזמן.</li>
+      <li>בפינה הימנית העליונה לחצו על <strong>▶ זמן כללי</strong>.</li>
+      <li>הזמן יוצג בזמן אמת ישירות בהדר.</li>
+      <li>לחצו <strong>■ עצור</strong> כדי לשמור את הזמן.</li>
     </ol>
-
-    <div class="tip-box">
-      <span class="box-icon">💡</span>
-      <div class="box-text">
-        <strong>הבדל בין שני השעונות</strong>
-        שעון עבודה = מקושר למשימה ספציפית, מוצג בדוח לפי קטגוריה.<br/>
-        שעון כללי = לא מקושר למשימה, מתאים לזמן עבודה כללי.
-      </div>
-    </div>
+    <div class="tip-box"><span class="box-icon">💡</span><div class="box-text"><strong>הבדל בין השעונות</strong>שעון עבודה = מקושר למשימה ספציפית · שעון כללי = לזמן כללי שאינו שייך למשימה מסוימת.</div></div>
   </section>
 
   <!-- ══ TIME SUMMARY ══ -->
   <section class="section" id="timesummary">
     <div class="section-header">
       <div class="section-icon">📊</div>
-      <div>
-        <div class="section-num">שלב 7</div>
-        <h2>סיכום זמני עבודה</h2>
+      <div><div class="section-num">שלב 7</div><h2>סיכום זמני עבודה</h2></div>
+    </div>
+    <p>לשונית <strong>סיכום זמני עבודה</strong> מציגה ניתוח מפורט של כל שעות העבודה – לפי לקוח, קטגוריה ותאריכים.</p>
+
+    <!-- MOCKUP: Time summary -->
+    <div class="mockup-scroll">
+      <div class="mockup-wrap" style="min-width:300px;max-width:560px;">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57"></div>
+          <div class="mockup-dot" style="background:#febc2e"></div>
+          <div class="mockup-dot" style="background:#28c840"></div>
+          <span class="mockup-url">סיכום זמני עבודה</span>
+        </div>
+        <div class="mockup-body">
+          <div class="mu-card" style="padding:0;">
+            <div class="mu-tab-bar" style="padding:0 16px;">
+              <div class="mu-tab">משימות</div>
+              <div class="mu-tab active">סיכום זמני עבודה</div>
+            </div>
+            <div style="padding:12px 16px;border-bottom:1px solid var(--border);">
+              <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+                <span style="font-size:.8rem;color:var(--text-muted);">סינון תאריכים:</span>
+                <div style="border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:.78rem;display:flex;align-items:center;gap:5px;background:#fff;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  01/05/2025
+                </div>
+                <span style="font-size:.78rem;color:var(--text-muted);">עד</span>
+                <div style="border:1px solid var(--border);border-radius:6px;padding:4px 8px;font-size:.78rem;display:flex;align-items:center;gap:5px;background:#fff;">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  10/05/2025
+                </div>
+                <button class="mu-btn mu-btn-primary" style="font-size:.75rem;padding:4px 10px;margin-right:auto;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  ייצוא PDF
+                </button>
+              </div>
+            </div>
+            <div style="padding:12px 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+              <!-- Client card 1 -->
+              <div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:#fff;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                  <span style="font-weight:700;font-size:.85rem;">לקוח א׳ בע"מ</span>
+                  <button class="mu-btn-icon" style="width:22px;height:22px;border:none;">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                  </button>
+                </div>
+                <div style="font-size:.78rem;display:flex;justify-content:space-between;padding:3px 0;color:var(--text);">
+                  <span>פגישות</span><span style="font-family:monospace;">03:20:00</span>
+                </div>
+                <div style="font-size:.78rem;display:flex;justify-content:space-between;padding:3px 0;color:var(--text);">
+                  <span>פיתוח</span><span style="font-family:monospace;">11:45:00</span>
+                </div>
+                <div style="font-size:.78rem;display:flex;justify-content:space-between;padding:3px 0;color:var(--text);">
+                  <span>תמיכה</span><span style="font-family:monospace;">02:10:00</span>
+                </div>
+                <hr class="mu-divider"/>
+                <div style="font-size:.82rem;display:flex;justify-content:space-between;font-weight:700;color:var(--primary);">
+                  <span>סה"כ</span><span style="font-family:monospace;">17:15:00</span>
+                </div>
+              </div>
+              <!-- Client card 2 -->
+              <div style="border:1px solid var(--border);border-radius:8px;padding:10px;background:#fff;">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                  <span style="font-weight:700;font-size:.85rem;">לקוח ב׳ בע"מ</span>
+                </div>
+                <div style="font-size:.78rem;display:flex;justify-content:space-between;padding:3px 0;color:var(--text);">
+                  <span>ייעוץ</span><span style="font-family:monospace;">05:00:00</span>
+                </div>
+                <div style="font-size:.78rem;display:flex;justify-content:space-between;padding:3px 0;color:var(--text);">
+                  <span>פגישות</span><span style="font-family:monospace;">02:30:00</span>
+                </div>
+                <hr class="mu-divider"/>
+                <div style="font-size:.82rem;display:flex;justify-content:space-between;font-weight:700;color:var(--primary);">
+                  <span>סה"כ</span><span style="font-family:monospace;">07:30:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <p>לשונית <strong>סיכום זמני עבודה</strong> מציגה ניתוח מפורט של כל שעות העבודה שנרשמו – לפי לקוח, קטגוריה ותאריכים.</p>
+    <p class="mockup-caption">סיכום זמני עבודה – פילוח לפי לקוח וקטגוריה, עם כפתור ייצוא PDF</p>
 
-    <h3>מה ניתן לראות בדוח?</h3>
     <div class="cards">
-      <div class="card">
-        <div class="card-icon">📅</div>
-        <h4>סינון תאריכים</h4>
-        <p>בחרו טווח תאריכים – ברירת המחדל היא מתחילת החודש הנוכחי.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏢</div>
-        <h4>פירוט לפי לקוח</h4>
-        <p>ראו כמה שעות סה"כ הושקעו עבור כל לקוח.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🏷️</div>
-        <h4>פירוט לפי קטגוריה</h4>
-        <p>לכל לקוח ראו פילוח לפי קטגוריות עבודה.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">✏️</div>
-        <h4>עריכת רשומות</h4>
-        <p>ניתן לערוך זמנים ידנית אם צריך לתקן רשומה.</p>
-      </div>
+      <div class="card"><div class="card-icon">📅</div><h4>סינון תאריכים</h4><p>בחרו טווח – ברירת המחדל: מתחילת החודש.</p></div>
+      <div class="card"><div class="card-icon">🏢</div><h4>פירוט לפי לקוח</h4><p>סה"כ שעות לכל לקוח.</p></div>
+      <div class="card"><div class="card-icon">🏷️</div><h4>פירוט לפי קטגוריה</h4><p>פילוח סוגי עבודה לכל לקוח.</p></div>
+      <div class="card"><div class="card-icon">✏️</div><h4>עריכת רשומות</h4><p>ניתן לערוך זמנים ידנית.</p></div>
     </div>
   </section>
 
@@ -831,47 +911,17 @@
   <section class="section" id="notifications">
     <div class="section-header">
       <div class="section-icon">🔔</div>
-      <div>
-        <div class="section-num">שלב 8</div>
-        <h2>התראות ועדכונים</h2>
-      </div>
+      <div><div class="section-num">שלב 8</div><h2>התראות ועדכונים</h2></div>
     </div>
     <p>המערכת שולחת התראות אוטומטיות כדי שלא תפספסו דברים חשובים.</p>
-
-    <h3>סוגי התראות</h3>
-
-    <div class="tip-box">
-      <span class="box-icon">📩</span>
-      <div class="box-text">
-        <strong>משימה חדשה הוקצתה אליך</strong>
-        כאשר מנהל או עמית מקצה משימה לעובד, הוא מקבל התראה בפעמון בראש המסך. הפעמון יציג מספר אדום על כמות ההתראות הלא-נקראות.
-      </div>
-    </div>
-
-    <div class="warn-box">
-      <span class="box-icon">⏰</span>
-      <div class="box-text">
-        <strong>שעון פעיל מעל שעתיים</strong>
-        אם שכחתם לעצור שעון עבודה, תקבלו התראה אוטומטית לאחר שעתיים רצופות.
-      </div>
-    </div>
-
-    <div class="warn-box">
-      <span class="box-icon">📊</span>
-      <div class="box-text">
-        <strong>התראות מגבלת שעות ללקוח</strong>
-        כשמתקרבים לגבול השעות החודשי של לקוח, המערכת מציגה:
-        <br/>• <strong style="color:var(--warning)">אזהרה כתומה</strong> – נותרו פחות מ-15%.
-        <br/>• <strong style="color:var(--destructive)">אזהרה אדומה</strong> – נותרו פחות מ-5%.
-        <br/>• <strong style="color:var(--destructive)">קריטי</strong> – חרגתם ב-5%+.
-      </div>
-    </div>
-
+    <div class="tip-box"><span class="box-icon">📩</span><div class="box-text"><strong>משימה חדשה הוקצתה אליך</strong>כאשר מנהל מקצה משימה לעובד, מופיע מספר אדום על הפעמון בהדר.</div></div>
+    <div class="warn-box"><span class="box-icon">⏰</span><div class="box-text"><strong>שעון פעיל מעל שעתיים</strong>תקבלו התראה אוטומטית אם שוכחים לעצור שעון.</div></div>
+    <div class="warn-box"><span class="box-icon">📊</span><div class="box-text"><strong>התראות מגבלת שעות ללקוח</strong>• <strong style="color:var(--warning)">כתום</strong> – נותרו פחות מ-15% · <strong style="color:var(--destructive)">אדום</strong> – נותרו פחות מ-5% · <strong style="color:var(--destructive)">קריטי</strong> – חרגתם.</div></div>
     <h3>איך קוראים התראה?</h3>
     <ol class="steps">
-      <li>לחצו על <strong>סמל הפעמון</strong> בראש המסך.</li>
+      <li>לחצו על <strong>סמל הפעמון 🔔</strong> בהדר.</li>
       <li>יפתח חלון עם כל ההתראות הלא-נקראות.</li>
-      <li>לחצו על ההתראה – היא תסומן כ"נקראה" אוטומטית.</li>
+      <li>לחצו על ההתראה – תסומן כ"נקראה" אוטומטית.</li>
     </ol>
   </section>
 
@@ -879,159 +929,55 @@
   <section class="section" id="pdf">
     <div class="section-header">
       <div class="section-icon">📄</div>
-      <div>
-        <div class="section-num">שלב 9</div>
-        <h2>ייצוא דוח לקובץ PDF</h2>
-      </div>
+      <div><div class="section-num">שלב 9</div><h2>ייצוא דוח לקובץ PDF</h2></div>
     </div>
-    <p>המערכת מאפשרת לייצא דוח מסודר ומקצועי לקובץ PDF – מתאים לשליחה ללקוחות, לחשבוניות, או לתיעוד פנימי.</p>
-
+    <p>ייצוא PDF מייצר דוח מקצועי מסודר – מתאים לשליחה ללקוחות, לחשבוניות, או לתיעוד.</p>
     <h3>איך מייצאים PDF?</h3>
     <ol class="steps">
       <li>עברו ללשונית <strong>סיכום זמני עבודה</strong>.</li>
-      <li>בחרו את <strong>טווח התאריכים</strong> הרצוי לדוח.</li>
-      <li>וודאו שהנתונים מוצגים כפי שתרצו.</li>
-      <li>לחצו על הכפתור <strong>ייצוא PDF</strong>.</li>
-      <li>הקובץ יוורד אוטומטית למכשיר שלכם.</li>
+      <li>בחרו <strong>טווח תאריכים</strong>.</li>
+      <li>לחצו <strong>ייצוא PDF</strong> – הקובץ יוורד למכשיר שלכם.</li>
     </ol>
-
-    <h3>מה כולל הדוח?</h3>
     <div class="cards">
-      <div class="card">
-        <div class="card-icon">🥧</div>
-        <h4>גרף עוגה</h4>
-        <p>הצגה ויזואלית של חלוקת הזמן בין הלקוחות.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📋</div>
-        <h4>טבלה מפורטת</h4>
-        <p>כל רשומות הזמן לפי לקוח וקטגוריה.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">🕐</div>
-        <h4>סה"כ שעות</h4>
-        <p>סיכום כולל לכל לקוח בפורמט שעות:דקות.</p>
-      </div>
-      <div class="card">
-        <div class="card-icon">📅</div>
-        <h4>טווח תאריכים</h4>
-        <p>הדוח מציין את תאריך ההתחלה והסיום שבחרתם.</p>
-      </div>
+      <div class="card"><div class="card-icon">🥧</div><h4>גרף עוגה</h4><p>חלוקת הזמן ויזואלית בין הלקוחות.</p></div>
+      <div class="card"><div class="card-icon">📋</div><h4>טבלה מפורטת</h4><p>כל רשומות הזמן לפי לקוח וקטגוריה.</p></div>
+      <div class="card"><div class="card-icon">🕐</div><h4>סה"כ שעות</h4><p>סיכום כולל לכל לקוח בפורמט שעות:דקות.</p></div>
+      <div class="card"><div class="card-icon">📅</div><h4>טווח תאריכים</h4><p>הדוח מציין את תאריך ההתחלה והסיום.</p></div>
     </div>
-
-    <div class="tip-box">
-      <span class="box-icon">💡</span>
-      <div class="box-text">
-        <strong>דוח מקצועי ללקוחות</strong>
-        הדוח נוצר בעברית עם כל הפרטים הנדרשים – מתאים לשליחה ישירה ללקוחות כהוכחת עבודה.
-      </div>
-    </div>
+    <div class="tip-box"><span class="box-icon">💡</span><div class="box-text"><strong>דוח מקצועי ללקוחות</strong>הדוח נוצר בעברית עם כל הפרטים הנדרשים – מתאים לשליחה ישירה ללקוחות.</div></div>
   </section>
 
   <!-- ══ PERMISSIONS ══ -->
   <section class="section" id="permissions">
     <div class="section-header">
       <div class="section-icon">🔐</div>
-      <div>
-        <div class="section-num">נספח</div>
-        <h2>הרשאות משתמשים</h2>
-      </div>
+      <div><div class="section-num">נספח</div><h2>הרשאות משתמשים</h2></div>
     </div>
-    <p>המערכת פועלת עם שני סוגי משתמשים: <strong>מנהל (אדמין)</strong> ו<strong>משתמש רגיל</strong>. לכל אחד יש הרשאות שונות.</p>
-
+    <p>המערכת פועלת עם שני סוגי משתמשים: <strong>מנהל (אדמין)</strong> ו<strong>משתמש רגיל</strong>.</p>
     <div class="table-wrap">
       <table class="role-table">
-        <thead>
-          <tr>
-            <th>פעולה</th>
-            <th>מנהל</th>
-            <th>משתמש רגיל</th>
-          </tr>
-        </thead>
+        <thead><tr><th>פעולה</th><th>מנהל</th><th>משתמש רגיל</th></tr></thead>
         <tbody>
-          <tr>
-            <td data-label="פעולה">צפייה בכל משימות הארגון</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">צפייה במשימות שלו / שהוקצו אליו</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">יצירת משימות</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">עריכת משימות</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן (הכל)</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן (שלו)</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">מחיקת משימות</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן (שיצר)</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">הפעלת שעון עבודה</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">הוספת לקוחות וקטגוריות</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">הוספת ועריכת עובדים</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">גישה להגדרות (גלגל שיניים)</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">ייצוא PDF</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">קבלת התראות</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td>
-          </tr>
-          <tr>
-            <td data-label="פעולה">הגדרת מגבלת שעות ללקוח</td>
-            <td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td>
-            <td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td>
-          </tr>
+          <tr><td data-label="פעולה">צפייה בכל משימות הארגון</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td></tr>
+          <tr><td data-label="פעולה">צפייה במשימות שהוקצו אליו</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td></tr>
+          <tr><td data-label="פעולה">יצירת משימות</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td></tr>
+          <tr><td data-label="פעולה">עריכת משימות</td><td data-label="מנהל"><span class="badge badge-yes">✔ הכל</span></td><td data-label="משתמש רגיל"><span class="badge badge-yes">✔ שלו בלבד</span></td></tr>
+          <tr><td data-label="פעולה">מחיקת משימות</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-yes">✔ שיצר בלבד</span></td></tr>
+          <tr><td data-label="פעולה">הפעלת שעון עבודה</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td></tr>
+          <tr><td data-label="פעולה">הוספת לקוחות וקטגוריות</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td></tr>
+          <tr><td data-label="פעולה">הוספת ועריכת עובדים</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td></tr>
+          <tr><td data-label="פעולה">גישה להגדרות</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td></tr>
+          <tr><td data-label="פעולה">ייצוא PDF</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td></tr>
+          <tr><td data-label="פעולה">קבלת התראות</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-yes">✔ כן</span></td></tr>
+          <tr><td data-label="פעולה">הגדרת מגבלת שעות ללקוח</td><td data-label="מנהל"><span class="badge badge-yes">✔ כן</span></td><td data-label="משתמש רגיל"><span class="badge badge-no">✗ לא</span></td></tr>
         </tbody>
       </table>
     </div>
-
-    <h3>איך מגדירים מנהל?</h3>
-    <ol class="steps">
-      <li>פתחו <strong>הגדרות</strong> ← <strong>ניהול משתמשים</strong>.</li>
-      <li>לחצו על <strong>הוסף חבר צוות</strong> ובחרו <strong>מנהל</strong> בשדה התפקיד.</li>
-      <li>לחבר צוות קיים – ניתן לשנות תפקיד על ידי פנייה לתמיכה.</li>
-    </ol>
-
-    <div class="info-box">
-      <span class="box-icon">ℹ️</span>
-      <div class="box-text">
-        <strong>הגדרת מנהל ראשי</strong>
-        המשתמש שיצר את הארגון הוא אוטומטית מנהל ויש לו גישה לכל ההגדרות. מומלץ שיהיה לפחות מנהל אחד נוסף לגיבוי.
-      </div>
-    </div>
+    <div class="info-box" style="margin-top:16px;"><span class="box-icon">ℹ️</span><div class="box-text"><strong>הגדרת מנהל ראשי</strong>המשתמש שיצר את הארגון הוא אוטומטית מנהל. מומלץ להגדיר לפחות מנהל אחד נוסף לגיבוי.</div></div>
   </section>
 
-</div><!-- /container -->
+</div>
 
-<!-- BACK TO TOP -->
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="חזרה לראש">▲</button>
 
 <footer>
@@ -1040,36 +986,22 @@
 </footer>
 
 <script>
-  /* ── TOC accordion (mobile only) ── */
   var tocOpen = false;
   function toggleToc() {
-    var body  = document.getElementById('toc-body');
-    var arrow = document.getElementById('toc-arrow');
-    var btn   = document.querySelector('.toc-toggle');
     tocOpen = !tocOpen;
-    body.classList.toggle('open', tocOpen);
-    arrow.classList.toggle('open', tocOpen);
-    btn.setAttribute('aria-expanded', tocOpen);
+    document.getElementById('toc-body').classList.toggle('open', tocOpen);
+    document.getElementById('toc-arrow').classList.toggle('open', tocOpen);
   }
   function closeToc() {
     if (window.innerWidth < 680) {
-      var body  = document.getElementById('toc-body');
-      var arrow = document.getElementById('toc-arrow');
       tocOpen = false;
-      body.classList.remove('open');
-      arrow.classList.remove('open');
+      document.getElementById('toc-body').classList.remove('open');
+      document.getElementById('toc-arrow').classList.remove('open');
     }
   }
-  /* open by default on desktop */
-  if (window.innerWidth >= 680) {
-    document.getElementById('toc-body').classList.add('open');
-  }
-
-  /* ── Back-to-top button ── */
+  if (window.innerWidth >= 680) document.getElementById('toc-body').classList.add('open');
   var btt = document.getElementById('btt');
-  window.addEventListener('scroll', function() {
-    btt.classList.toggle('visible', window.scrollY > 300);
-  }, { passive: true });
+  window.addEventListener('scroll', function() { btt.classList.toggle('visible', window.scrollY > 300); }, {passive:true});
 </script>
 </body>
 </html>
